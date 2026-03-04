@@ -7,7 +7,7 @@ README_PATH = BASE_DIR / "README.md"
 
 setup(
     name="logmera",
-    version="0.1.2",
+    version="0.1.3",
     description="Self-hosted AI observability backend",
     long_description=README_PATH.read_text(encoding="utf-8") if README_PATH.exists() else "",
     long_description_content_type="text/markdown",

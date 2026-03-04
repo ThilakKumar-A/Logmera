@@ -91,7 +91,7 @@ async def list_logs(db: AsyncSession = Depends(get_db_session)) -> list[LogRead]
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="logmera", version="0.1.2")
+    app = FastAPI(title="logmera", version="0.1.3")
 
     @app.on_event("startup")
     async def _startup() -> None:
