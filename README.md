@@ -8,9 +8,6 @@ Log prompts, responses, and latency from your AI apps and view them in a simple 
 
 </div>
 
----
-Source Code: https://github.com/ThilakKumar-A/Logmera/
---
 ## What is Logmera?
 
 Logmera is a **self-hosted observability tool for AI / LLM applications**.
@@ -36,6 +33,9 @@ Your data stays on **your infrastructure**.
 
 ---
 
+Source Code: https://github.com/ThilakKumar-A/Logmera/
+
+---
 ## Why use Logmera?
 
 When building AI applications it becomes hard to know:
@@ -222,20 +222,8 @@ MIT License
 
 ## Links
 
-<div align="center">
+PyPI
+https://pypi.org/project/logmera/
 
-**[PyPI](https://pypi.org/project/logmera/) · [GitHub](https://github.com/ThilakKumar-A/Logmera/) · [Report a Bug](https://github.com/ThilakKumar-A/Logmera/issues)**
-
-Built for developers who want observability without the black box.
-
-<<<<<<< HEAD
-=======
-
-<div align="center">
-
-**[PyPI](https://pypi.org/project/logmera/) · [GitHub](https://github.com/ThilakKumar-A/Logmera/) · [Report a Bug](https://github.com/ThilakKumar-A/Logmera/issues)**
-
-Built for developers who want observability without the black box.
-
->>>>>>> 10c3376d96682b44e8c5c400338c28525fe5e57d
-</div>
+GitHub
+https://github.com/ThilakKumar-A/Logmera/
