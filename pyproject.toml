@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "logmera"
-version = "0.1.3"
+version = "0.1.5"
 description = "Self-hosted AI observability backend"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -23,3 +23,4 @@ logmera = "logmera.cli:start"
 
 [tool.setuptools.packages.find]
 include = ["logmera*"]
+
