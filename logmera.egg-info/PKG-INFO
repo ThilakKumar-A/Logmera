@@ -1,0 +1,260 @@
+Metadata-Version: 2.4
+Name: logmera
+Version: 0.1.2
+Summary: Self-hosted AI observability backend
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.116.0
+Requires-Dist: uvicorn>=0.35.0
+Requires-Dist: sqlalchemy>=2.0.0
+Requires-Dist: asyncpg>=0.29.0
+Requires-Dist: pydantic>=2.7.0
+Requires-Dist: typer>=0.12.0
+Requires-Dist: requests>=2.31.0
+Dynamic: requires-python
+
+﻿# Logmera
+
+**Self-hosted AI observability platform for logging, monitoring, and debugging LLM applications.**
+
+Logmera helps developers capture prompts, responses, latency, and model performance â€” stored securely in your own database.
+
+No cloud lock-in. No vendor-managed service required. Full control.
+
+---
+
+## Why Logmera?
+
+When building AI applications, you need visibility into what your models are doing.
+
+Logmera provides:
+
+* Prompt and response logging
+* Latency and performance tracking
+* Self-hosted storage (PostgreSQL)
+* Simple SDK integration
+* FastAPI backend with CLI
+* Privacy-safe observability
+
+Use Logmera to debug failures, monitor production systems, and understand AI behavior.
+
+---
+
+## Quick Start (30 seconds)
+
+### 1. Install
+
+```bash
+pip install logmera
+```
+
+### 2. Start PostgreSQL (Docker)
+
+```bash
+docker run --name logmera-postgres \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=logmera \
+  -p 5432:5432 -d postgres:16
+```
+
+### 3. Start Logmera
+
+```bash
+logmera --db-url "postgresql://postgres:postgres@localhost:5432/logmera"
+```
+
+Server starts at:
+
+```
+http://127.0.0.1:8000
+```
+
+Health check:
+
+```bash
+curl http://127.0.0.1:8000/health
+```
+
+Dashboard:
+
+```text
+http://127.0.0.1:8000/
+```
+
+The root route serves the web dashboard for viewing and filtering logs.
+
+---
+
+## Log Your First AI Event
+
+### Using Python SDK
+
+```python
+import logmera
+
+logmera.log(
+    project_id="demo",
+    prompt="Hello",
+    response="Hi there",
+    model="gpt-4",
+    latency_ms=120,
+    status="success"
+)
+```
+
+That's it. Logmera stores it in PostgreSQL.
+
+---
+
+## API Usage
+
+### Create Log
+
+```bash
+curl -X POST http://127.0.0.1:8000/logs \
+  -H "Content-Type: application/json" \
+  -d '{
+    "project_id": "demo",
+    "prompt": "Hello",
+    "response": "Hi",
+    "model": "gpt-4",
+    "latency_ms": 95,
+    "status": "success"
+  }'
+```
+
+### View Logs
+
+```bash
+curl http://127.0.0.1:8000/logs
+```
+
+---
+
+## Architecture
+
+```
+ Your AI App 
+     │ 
+     ▼
+ Logmera SDK 
+     │ 
+     ▼ 
+ Logmera Backend (FastAPI) 
+ │ ▼ PostgreSQL Database
+```
+
+Your data stays in your infrastructure.
+
+---
+
+## CLI Usage
+
+Start server:
+
+```bash
+logmera --host 127.0.0.1 --port 8000
+```
+
+Provide database URL:
+
+```bash
+logmera --db-url "postgresql://user:pass@localhost:5432/logmera"
+```
+
+Disable prompt mode:
+
+```bash
+logmera --no-prompt --db-url "postgresql://..."
+```
+
+---
+
+## Configuration
+
+Environment variables:
+
+```
+DATABASE_URL
+DB_POOL_SIZE
+DB_MAX_OVERFLOW
+DB_POOL_TIMEOUT
+LOGMERA_URL
+LOGMERA_TIMEOUT_SECONDS
+LOGMERA_RETRIES
+```
+
+Config file location:
+
+```
+~/.logmera/config.env
+```
+
+---
+
+## Production Deployment
+
+Run with PostgreSQL on any server:
+
+* Local machine
+* VPS
+* Docker
+* Kubernetes
+* Cloud VM
+
+Logmera is fully self-hosted.
+
+---
+
+## Use Cases
+
+Logmera is ideal for:
+
+* AI SaaS applications
+* LLM agents
+* Chatbots
+* RAG systems
+* AI automation pipelines
+* Production AI monitoring
+
+---
+
+## Roadmap
+
+Planned features:
+
+* Chrome extension
+* VS Code extension
+* Hosted cloud version
+* Advanced analytics
+* Multi-project management
+
+---
+
+## Philosophy
+
+Logmera is designed to be:
+
+* Simple
+* Self-hosted
+* Fast
+* Developer-friendly
+* Privacy-focused
+
+No vendor lock-in.
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Links
+
+PyPI
+https://pypi.org/project/logmera/
+
+

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logmera Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/dashboard/favicon.ico">
+  <link rel="stylesheet" href="/dashboard/styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Logmera Dashboard</h1>
+      <p>View and filter API logs.</p>
+    </header>
+
+    <section class="filters">
+      <input id="search" type="text" placeholder="Search prompt/response/model/project">
+      <input id="projectFilter" type="text" placeholder="Project ID">
+      <input id="modelFilter" type="text" placeholder="Model">
+      <input id="fromDate" type="date" title="From date">
+      <input id="toDate" type="date" title="To date">
+      <select id="status">
+        <option value="">All status</option>
+      </select>
+      <button id="clearFilters" type="button">Clear</button>
+      <button id="refreshData" type="button">Refresh</button>
+    </section>
+
+    <section class="summary">
+      <div><strong id="totalCount">0</strong> total</div>
+      <div><strong id="filteredCount">0</strong> filtered</div>
+      <div><strong id="avgLatency">0</strong> avg latency (ms)</div>
+    </section>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Created</th>
+            <th>Project</th>
+            <th>Model</th>
+            <th>Status</th>
+            <th>Latency</th>
+            <th>Prompt</th>
+            <th>Response</th>
+          </tr>
+        </thead>
+        <tbody id="logsBody"></tbody>
+      </table>
+      <p id="emptyState" class="empty hidden">No logs found.</p>
+    </section>
+  </main>
+
+  <script src="/dashboard/app.js"></script>
+</body>
+</html>
